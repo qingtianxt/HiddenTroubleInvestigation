@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 设置上传文件的总大小，默认是2M，struts.multipart.maxSize=2097152 -->
+	<constant name="struts.multipart.maxSize" value="20971520"></constant>
+
+	<package name="crm" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="login" type="redirect">/login.jsp</result>
+		</global-results>
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="getInfo">/User/member-show.jsp</result>
+			<result name="page">/User/member-list.jsp</result>
+			<result name="check">/User/member-check.jsp</result>
+			<result name="initUpdate">/User/member-edit.jsp</result>
+			<result name="initauthorization">/User/member-authorization.jsp</result>
+			<result name="initchangeWord">/User/change-password.jsp</result>
+			<result name="delete" type="redirectAction">user_findByPage.action?msg=2
+			</result>
+			<result name="delele1" type="redirectAction">user_findByPage.action?msg=4
+			</result>
+			<result name="delete2" type="redirectAction">user_findByPage.action?msg=5
+			</result>
+			<result name="updateSuccess" type="redirectAction">user_findByPage.action?msg=1
+			</result>
+			<result name="updateFail" type="redirectAction">user_findByPage.action?msg=6
+			</result>
+			<result name="authorizateSuccess" type="redirectAction">user_checkByPage.action?msg=1
+			</result>
+			<result name="authorizateFail" type="redirectAction">user_checkByPage.action?msg=2
+			</result>
+			<result name="changeWord" type="redirectAction">user_findByPage.action?msg=3
+			</result>
+			<result name="save">/User/member-add.jsp</result>
+
+			<result name="loginTrue" type="redirect">/index.jsp</result>
+			<result name="loginFalse">/login.jsp</result>
+			<result name="loginErrorPower">/login.jsp</result>
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.allowedExtensions">.jpg,.txt</param>
+			</interceptor-ref>
+		</action>
+
+
+		<action name="hiddenDanger_*" class="hiddenDangerAction"
+			method="{1}">
+			<result name="save">/HiddenDanger/HiddenDanger-add.jsp</result>
+			<result name="page">/HiddenDanger/HiddenDanger-list.jsp</result>
+			<result name="updateStatus" type="redirectAction">hiddenDanger_findByPage.action?msg=3</result>
+			<result name="findById">/HiddenDanger/HiddenDanger-show.jsp</result>
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.allowedExtensions">.jpg,.txt</param>
+			</interceptor-ref>
+			<result name="initUpdate">/HiddenDanger/HiddenDanger-edit.jsp</result>
+			<result name="deleteSuccess" type="redirectAction">hiddenDanger_findByPage.action?msg=1</result>
+			<result name="deleteFail" type="redirectAction">hiddenDanger_findByPage.action?msg=2</result>
+		</action>
+
+
+		<action name="place_*" class="placeAction" method="{1}">
+			<result name="save">/place/place-add.jsp</result>
+			<result name="getById">/place/place-show.jsp</result>
+			<result name="initUpdate">/place/place-edit.jsp</result>
+			<result name="update">/place/place-edit.jsp</result>
+			<result name="deleteFail">/place/place-list.jsp</result>
+			<result name="deleteSuccess">/place/place-list.jsp</result>
+		</action>
+		
+		<action name="grade_*" class="gradeAction" method="{1}">
+			<result name="page">/grade/grade-list.jsp</result>
+			<result name="initUpdate">/grade/grade-edit.jsp</result>
+			<result name="save" type="redirectAction">grade_findByPage.action?msg=1</result>
+			<result name="update" type="redirectAction">grade_findByPage.action?msg=2</result>
+			<result name="delete" type="redirectAction">grade_findByPage.action?msg=3</result>
+		</action>
+		
+		<action name="standardInvestigation_*" class="standardInvestigationAction" method="{1}">
+			<result name="baocun">/StandardInvestigation/Standard-add.jsp</result>
+			<result name="page">/StandardInvestigation/Standard-list.jsp</result>
+			<result name="initUpdate">/StandardInvestigation/Standard-edit.jsp</result>
+			<result name="update" type="redirectAction">standardInvestigation_findByPage.action?msg=1</result>
+			<result name="delete" type="redirectAction">standardInvestigation_findByPage.action?msg=2</result>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+

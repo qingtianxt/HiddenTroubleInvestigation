@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="domain.Place" table="place">
+		<id name="id" column="id">
+			<generator class="native" />
+		</id>
+
+		<property name="place_name" column="place_name" />
+		<property name="parent_id" column="parent_id" />
+		<property name="longitude" column="longitude" />
+		<property name="latitude" column="latitude" />
+		<property name="info" column="info" />
+
+		<!-- 让客户放弃外键的维护 -->
+		<set name="hiddenDangers" inverse="true">
+			<key column="place_id"></key>
+			<one-to-many class="domain.HiddenDanger" />
+		</set>
+		
+		<!-- 让客户放弃外键的维护 -->
+		<set name="standardInvestigations" inverse="true">
+			<key column="place_id"></key>
+			<one-to-many class="domain.StandardInvestigation" />
+		</set>
+	</class>
+
+</hibernate-mapping>    

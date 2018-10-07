@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="domain.Grade" table="grade">
+		<id name="grade_id" column="grade_id">
+			<generator class="native" />
+		</id>
+
+		<property name="info" column="info" />
+		<property name="create_date" column="create_date" />
+
+		<!-- 让客户放弃外键的维护 -->
+		<set name="hiddenDangers" inverse="true">
+			<key column="grade_id"></key>
+			<one-to-many class="domain.HiddenDanger" />
+		</set> 
+		<set name="standardInvestigations" inverse="true">
+			<key column="grade_id"></key>
+			<one-to-many class="domain.StandardInvestigation" />
+		</set> 
+	</class>
+
+</hibernate-mapping>    

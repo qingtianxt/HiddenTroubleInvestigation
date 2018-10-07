@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="domain.User" table="user1">
+		<id name="user_id" column="user_id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+
+		<property name="telephone" column="telephone"
+			type="java.lang.String" />
+		<property name="password" column="password"
+			type="java.lang.String" />
+		<property name="headPortrait" column="headPortrait"
+			type="java.lang.String" />
+		<property name="create_date" column="create_date"
+			type="java.lang.String" />
+		<property name="role" column="role" type="java.lang.Integer" />
+		<property name="trueName" column="trueName"
+			type="java.lang.String" />
+
+
+		<set name="standardInvestigations" inverse="true">
+			<key column="user_id"></key>
+			<one-to-many class="domain.StandardInvestigation" />
+		</set>
+		<set name="standards" inverse="true">
+			<key column="repair_id"></key>
+			<one-to-many class="domain.StandardInvestigation" />
+		</set>
+
+		<set name="hiddenDangers" inverse="true">
+			<key column="checkUp_id"></key>
+			<one-to-many class="domain.HiddenDanger" />
+		</set>
+		<set name="hiddenDangers2" inverse="true">
+			<key column="repair_id"></key>
+			<one-to-many class="domain.HiddenDanger" />
+		</set>
+	</class>
+
+</hibernate-mapping>    

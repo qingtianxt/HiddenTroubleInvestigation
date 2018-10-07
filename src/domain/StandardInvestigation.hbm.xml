@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="domain.StandardInvestigation"
+		table="StandardInvestigation">
+		<id name="standardInvestigation_id"
+			column="standardInvestigation_id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="info" column="info" type="java.lang.String" />
+		<property name="fisrtPlace" column="fisrtPlace" type="java.lang.Integer" />
+		<property name="content" column="content" type="java.lang.String" />
+		<property name="create_date" column="create_date" type="java.lang.String" />
+		
+		<many-to-one name="place" class="domain.Place" column="place_id"></many-to-one>
+		<many-to-one name="grade" class="domain.Grade" column="grade_id"></many-to-one>
+
+		
+		
+		<many-to-one name="user" class="domain.User" column="user_id"></many-to-one>
+		<many-to-one name="repair" class="domain.User" column="repair_id"></many-to-one>
+		
+		<!-- <one-to-one name="user" constrained="true"></one-to-one> -->
+	</class>
+
+</hibernate-mapping>    

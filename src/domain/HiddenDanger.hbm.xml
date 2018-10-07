@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="domain.HiddenDanger" table="HiddenDanger">
+		<id name="hidden_id" column="hidden_id">
+			<generator class="native" />
+		</id>
+
+		<property name="info" column="info"></property>
+		<property name="fisrtPlace" column="fisrtPlace"></property>
+		<property name="status" column="status"></property>
+		<property name="checkUpStatus" column="checkUpStatus"></property>
+		<property name="type" column="type"></property>
+		<property name="upload_date" column="upload_date"></property>
+
+		<many-to-one name="place" class="domain.Place"
+			column="place_id"></many-to-one>
+		<many-to-one name="grade" class="domain.Grade"
+			column="grade_id"></many-to-one>
+
+		<many-to-one name="user" class="domain.User"
+			column="checkUp_id"></many-to-one>
+		<many-to-one name="repair" class="domain.User"
+			column="repair_id"></many-to-one>
+	</class>
+
+</hibernate-mapping>    
